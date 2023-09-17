@@ -7,8 +7,7 @@ const { SHOW_CHILD } = Cascader;
 const App = () => {
   const [name, setName] = useState("");
   const [isChecked, setIsChecked] = useState(false);
-  const [sectors, setSectors] = useState(data);
-  const savedData = localStorage.getItem("savedData")
+  const [sectors] = useState(data);
 
   const onChange = (value) => {
     // setSectors(value);
