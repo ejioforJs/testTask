@@ -8,31 +8,26 @@ const App = () => {
   const [name, setName] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [sectors] = useState(data);
+  const [submitSectors, setSubmitSectors] = useState([])
+  const [submitted, setSubmitted] = useState(false)
 
   const onChange = (value) => {
-    // setSectors(value);
-    console.log(value);
+    setSubmitSectors(value);
   };
-
-  console.log(sectors)
 
   const checkHandler = () => {
     setIsChecked(!isChecked)
   }
 
   const submitHandler = () => {
-    console.log(
-      [
-        name,
-        isChecked,
-        sectors
-      ]
-    )
+    setSubmitted(true)
   };
 
   return (
     <div className="container">
-      <div className="container2">
+      {
+        !submitted ? (
+          <div className="container2">
         <p className="header">
           Please enter your name and pick the Sectors you are currently involved
           in.
@@ -74,6 +69,18 @@ const App = () => {
           </button>
         </form>
       </div>
+        ) : (
+          <div>
+            <h2>Submitted data</h2>
+            <div>Name: {name}</div>
+            <div>Agreed to the terms and services? {isChecked}</div>
+            <br/>
+            <h4>Sectors chosen</h4>
+            <div>{submitSectors}</div>
+          </div>
+        )
+      }
+      
     </div>
   );
 };
